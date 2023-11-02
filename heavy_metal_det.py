@@ -41,7 +41,7 @@ from email.mime.multipart import MIMEMultipart
 
 # Load the pickled model
 
-
+path = os.path.dirname(__file__)
 
 def preprocessing(data):
     
@@ -70,7 +70,7 @@ import streamlit as st
 import toml
 
 # Load the secrets file
-secrets = toml.load("ids.toml")
+secrets = toml.load(path+"/ids.toml")
 
 def authenticate():
     # Create a login form
@@ -85,13 +85,13 @@ def authenticate():
     # Define the Streamlit app
 def main():
     # Set the title of the app
-    model_cd = keras.models.load_model('pickeled models\model_cd.h5')
+    model_cd = keras.models.load_model(path+'/pickeled models\model_cd.h5')
 
-    model_cu = keras.models.load_model('pickeled models\model_cu.h5')
+    model_cu = keras.models.load_model(path+'/pickeled models\model_cu.h5')
 
-    model_hg = keras.models.load_model('pickeled models\model_hg.h5')
+    model_hg = keras.models.load_model(path+'/pickeled models\model_hg.h5')
 
-    model_pb = keras.models.load_model('pickeled models\model_pb.h5')
+    model_pb = keras.models.load_model(path+'/pickeled models\model_pb.h5')
     st.title('Heavy Metal Detection')
     
     if authenticate():
